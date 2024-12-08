@@ -3,10 +3,12 @@ import { useContext } from "react";
 
 import { AuthContext } from "./AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
+import auth from "./Firebase-init";
+import { FaGoogle } from "react-icons/fa";
 
 
 const Register = () => {
-    const {registerWithPass} = useContext(AuthContext)
+    const {registerWithPass,loginWithGoogle} = useContext(AuthContext)
    const navigate = useNavigate();
 
     const handleRegister = e => {
@@ -24,7 +26,8 @@ const Register = () => {
            const newUser = {name,email,photo}
 
            console.log(newUser)
-
+            
+           
 
      
            fetch('https://visa-navigator-backend-swart.vercel.app/users',{
@@ -51,6 +54,15 @@ const Register = () => {
         })
 
     }
+
+
+
+    const handleGoogleSignIn = () => {
+      loginWithGoogle(auth)
+      .then((result) => {
+        const user = result.user;
+      })
+    }
     return (
         <div className="hero bg-base-200 min-h-screen">
           
@@ -59,7 +71,7 @@ const Register = () => {
       <h1 className="text-5xl font-bold">Register Now!</h1>
       
     </div>
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl px-10 py-5">
       <form onSubmit={handleRegister} className="card-body">
         <div className="form-control">
          
@@ -81,8 +93,12 @@ const Register = () => {
           <button className="btn btn-primary">Register</button>
         </div>
       </form>
-      <p>Do You Have Any Account? Please <Link to="/login" className="underline font-semibold">Login</Link></p>
+      <div className="text-center">
+      <button onClick={handleGoogleSignIn} className="btn btn-primary px-16 "> <FaGoogle /> Login with Google</button>
     </div>
+      <p className="mt-3">Do You Have Any Account? Please <Link to="/login" className="underline font-semibold">Login</Link></p>
+    </div>
+    
   </div>
 </div>
     );
