@@ -10,11 +10,11 @@ const MyVisaApplications = () => {
     
   useEffect(() => {
 
-    fetch('http://localhost:3000/visa')
+    fetch('https://visa-navigator-backend-swart.vercel.app/visa')
       .then(res => res.json())
       .then(data => setVisaData(data));
 
-    fetch('http://localhost:3000/applications')
+    fetch('https://visa-navigator-backend-swart.vercel.app/applications')
       .then(res => res.json())
       .then(data => setApplications(data.filter((app) => app.email === user.email)));
   }, [user.email]);
@@ -32,7 +32,7 @@ const MyVisaApplications = () => {
         confirmButtonText: 'Yes, cancel it!',})
         .then((result) => {
             if(result.isConfirmed){
-    fetch(`http://localhost:3000/applications/${applicationId}`, {
+    fetch(`https://visa-navigator-backend-swart.vercel.app/applications/${applicationId}`, {
       method: 'DELETE',
     })
     .then(() => {
@@ -57,7 +57,7 @@ const MyVisaApplications = () => {
 
 
         return (
-          <div key={application._id} className="visa-card shadow-xl p-10">
+          <div key={application._id} className="visa-card shadow-xl p-10 text-center mt-16">
             <img className="rounded-lg" src={visa.countryImage} alt={visa.countryName} />
             
             <h3 className="text-2xl font-bold mt-3">{visa.countryName}</h3>

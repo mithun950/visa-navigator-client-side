@@ -9,7 +9,7 @@ const MyVisaCard = ({ data, personalData, setPersonalData }) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this visa?");
     if (confirmDelete) {
       try {
-        const response = await fetch(`http://localhost:3000/visa/${_id}`, { method: "DELETE" });
+        const response = await fetch(`https://visa-navigator-backend-swart.vercel.app/visa/${_id}`, { method: "DELETE" });
         if (response.ok) {
           setPersonalData(personalData.filter((item) => item._id !== _id));
         }
@@ -21,7 +21,7 @@ const MyVisaCard = ({ data, personalData, setPersonalData }) => {
 
   const handleUpdate = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/visa/${_id}`, {
+      const response = await fetch(`https://visa-navigator-backend-swart.vercel.app/visa/${_id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

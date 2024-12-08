@@ -7,7 +7,7 @@ const AllVisas = () => {
     const [filter, setFilter] = useState("All");
 
     useEffect(() => {
-        fetch('http://localhost:3000/visa')
+        fetch('https://visa-navigator-backend-swart.vercel.app/visa')
             .then(res => res.json())
             .then(data => setAllVisa(data));
     }, []);

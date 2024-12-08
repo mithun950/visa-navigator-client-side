@@ -39,7 +39,7 @@ const location = useLocation();
 
     console.log(applicationData); 
 
-    fetch("http://localhost:3000/applications",{
+    fetch("https://visa-navigator-backend-swart.vercel.app/applications",{
         method: "POST",
         headers: {
             "content-type": "application/json",

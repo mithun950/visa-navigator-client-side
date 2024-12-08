@@ -25,7 +25,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayouts></MainLayouts>,
-    loader: () => fetch("http://localhost:3000/visa"),
+    loader: () => fetch("https://visa-navigator-backend-swart.vercel.app/visa"),
     children: [
       {
         path: "/",
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: "/my-added-visas",
         element: <PrivateRoutes><MyAddedVisa></MyAddedVisa></PrivateRoutes>,
-        loader: async() => {const res = await fetch('http://localhost:3000/visa')
+        loader: async() => {const res = await fetch('https://visa-navigator-backend-swart.vercel.app/visa')
           const data = await res.json()
           return data;
         }
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       {
         path: "/my-visa-applications",
         element: <PrivateRoutes><MyVisaApplications></MyVisaApplications></PrivateRoutes>,
-        loader: () => fetch('http://localhost:3000/applications')
+        loader: () => fetch('https://visa-navigator-backend-swart.vercel.app/applications')
 
       },
       {

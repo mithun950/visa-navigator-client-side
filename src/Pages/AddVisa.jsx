@@ -38,7 +38,7 @@ const AddVisa = () => {
     console.log(newVisa);
 
     // Send data to the server
-    fetch('http://localhost:3000/visa', {
+    fetch('https://visa-navigator-backend-swart.vercel.app/visa', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

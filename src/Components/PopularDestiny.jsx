@@ -5,7 +5,7 @@ const PopularDestiny = () => {
   const [visas, setVisas] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/visa") 
+    fetch("https://visa-navigator-backend-swart.vercel.app/visa") 
       .then((res) => res.json())
       .then((data) => {
         const trending = data.slice(0, 3);

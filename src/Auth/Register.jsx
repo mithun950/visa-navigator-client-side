@@ -27,7 +27,7 @@ const Register = () => {
 
 
      
-           fetch('http://localhost:3000/users',{
+           fetch('https://visa-navigator-backend-swart.vercel.app/users',{
             method: "POST",
             headers:{
                 "content-type": "application/json",
