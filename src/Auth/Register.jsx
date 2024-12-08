@@ -1,15 +1,21 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 
 import { AuthContext } from "./AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "./Firebase-init";
-import { FaGoogle } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGoogle, FaLock } from "react-icons/fa";
 
 
 const Register = () => {
     const {registerWithPass,loginWithGoogle} = useContext(AuthContext)
    const navigate = useNavigate();
+   const [showPassword, setShowPassword] = useState(false);
+
+   const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+};
+
 
     const handleRegister = e => {
         e.preventDefault()
@@ -18,14 +24,22 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photo = form.photo.value;
-        
-        registerWithPass(email,password,photo)
+         
+        if (!/[A-Z]/.test(password) ||  !/[a-z]/.test(password)) {
+          toast.error("Password must include at least one uppercase and one lowercase letter!");
+          return;
+      }
+
+
+
+
+        registerWithPass(email,password,photo,name)
         .then(result =>{
-           console.log(result.user)
+           
 
-           const newUser = {name,email,photo}
+           const newUser = {name,email,photo,name}
 
-           console.log(newUser)
+           
             
            
 
@@ -87,10 +101,26 @@ const Register = () => {
         </div>
         <div className="form-control">
          
-          <input type="password" placeholder="password" className="input input-bordered mt-3 " name="password" required />
-        </div>
+        <div className="relative">
+                          
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Enter your password"
+                                className="input input-bordered w-full pl-10 pr-10"
+                                name='password'
+                               />
+                         
+                            <div
+                                className="absolute right-3 top-4 text-gray-400 cursor-pointer"
+                                onClick={togglePasswordVisibility}
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </div>
+                        </div>       
+                        
+                         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Register</button>
+          <Link to="/" className="btn btn-primary">Register</Link>
         </div>
       </form>
       <div className="text-center">
