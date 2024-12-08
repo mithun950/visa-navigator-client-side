@@ -37,7 +37,7 @@ const MyVisaCard = ({ data, personalData, setPersonalData }) => {
   return (
     <>
    
-    <div className="card border mt-16 p-4 text-center">
+    <div className="card border mt-16 p-4 text-center h-screen">
       <img src={countryImage} alt={countryName} className="w-full h-40 object-cover rounded-lg" />
       <h2 className="text-lg font-bold mt-2">{countryName}</h2>
       <p>Visa Type: {visaType}</p>

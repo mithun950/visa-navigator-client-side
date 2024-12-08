@@ -49,7 +49,7 @@ const MyVisaApplications = () => {
   };
 
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 w-11/12 mx-auto gap-5">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 w-11/12 mx-auto gap-5 h-screen">
       {applications.map(application => {
         const visa = visaData.find(v => v._id === application.visaId);
         
