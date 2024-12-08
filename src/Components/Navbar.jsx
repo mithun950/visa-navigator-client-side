@@ -2,7 +2,8 @@ import { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Auth/AuthProvider";
 import { BsMoon, BsSun } from "react-icons/bs";
-
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = ({onToggle}) => {
 
@@ -24,7 +25,7 @@ const Navbar = ({onToggle}) => {
     .then(() => {
         window.location.reload() ;
         navigate('/');
-        alert('logOut successfully');
+        toast.success('logOut successfully!');
 
        
     })
@@ -66,6 +67,7 @@ const Navbar = ({onToggle}) => {
     </>
     return (
         <div className="sticky top-0 z-50 backdrop-blur-md w-full bg-blue-500 dark:bg-slate-600   dark:text-white">
+          <ToastContainer></ToastContainer>
           <div className="navbar w-11/12 mx-auto">
   <div className="navbar-start">
     <div className="dropdown">

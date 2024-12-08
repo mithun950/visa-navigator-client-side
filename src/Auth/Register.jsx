@@ -5,6 +5,7 @@ import { AuthContext } from "./AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "./Firebase-init";
 import { FaEye, FaEyeSlash, FaGoogle, FaLock } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
 
 
 const Register = () => {
@@ -36,7 +37,7 @@ const Register = () => {
         registerWithPass(email,password,photo,name)
         .then(result =>{
            
-
+            toast.success('Register Successfully!')
            const newUser = {name,email,photo,name}
 
            
@@ -79,7 +80,7 @@ const Register = () => {
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
-          
+          <ToastContainer></ToastContainer>
   <div className="hero-content flex-col">
     <div className="text-center lg:text-left">
       <h1 className="text-5xl font-bold">Register Now!</h1>
