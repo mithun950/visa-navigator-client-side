@@ -79,7 +79,7 @@ const AddVisa = () => {
     <div>
       <h2 className="text-2xl font-bold text-center mt-6">Add Visa</h2>
       <form onSubmit={handleAddVisa}>
-        <div className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 w-10/12 mx-auto p-10 rounded-lg mt-8 shadow-lg">
+        <div className=" bg-gray-300 w-10/12 mx-auto p-10 rounded-lg mt-8 shadow-lg">
           <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-6">
 
             {/* Country Image */}
