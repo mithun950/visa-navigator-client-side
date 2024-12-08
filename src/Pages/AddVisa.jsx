@@ -6,6 +6,22 @@ const AddVisa = () => {
 
   const { user } = useContext(AuthContext);
 
+
+
+  const [requireDoc,setRequireDoc] = useState([])
+  const handleRequired = (event) => {
+     const {value,checked} = event.target;
+
+     if(checked){
+      setRequireDoc(pre => [...pre,value])
+     }
+     else{
+      setRequireDoc(pre => {
+        return[...pre.filter(doc => doc!==value)]
+      })
+     }
+  }
+
   const handleAddVisa = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -13,7 +29,7 @@ const AddVisa = () => {
     const countryName = form.countryName.value;
     const visaType = form.visaType.value;
     const processingTime = form.processingTime.value;
-    const requiredDocuments = form.requiredDocuments.value.split(',').map((doc) => doc.trim());
+    const requiredDocuments = requireDoc;
     const description = form.description.value;
     const ageRestriction = form.ageRestriction.value;
     const fee = form.fee.value;
@@ -102,7 +118,7 @@ const AddVisa = () => {
               </select>
             </div>
 
-            {/* Processing Time */}
+          
             <div>
               <input
                 className="border w-full text-center rounded-lg py-3 mt-4"
@@ -113,26 +129,26 @@ const AddVisa = () => {
               />
             </div>
 
-            {/* Required Documents */}
+            
             <div>
               <label className="block font-medium mt-4">Required Documents</label>
               <div className="grid md:grid-cols-3 justify-center gap-4 mt-2">
                 <label>
-                  <input type="checkbox" name="requiredDocuments" value="Valid passport" />
+                  <input onChange={handleRequired} type="checkbox" name="requiredDocuments" value="Valid passport" />
                   <span className="ml-2">Valid passport</span>
                 </label>
                 <label>
-                  <input type="checkbox" name="requiredDocuments" value="Visa application form" />
+                  <input onChange={handleRequired} type="checkbox" name="requiredDocuments" value="Visa application form" />
                   <span className="ml-2">Visa application form</span>
                 </label>
                 <label>
-                  <input type="checkbox" name="requiredDocuments" value="Recent passport-sized photograph" />
+                  <input onChange={handleRequired} type="checkbox" name="requiredDocuments" value="Recent passport-sized photograph" />
                   <span className="ml-2">Recent passport-sized photograph</span>
                 </label>
               </div>
             </div>
 
-            {/* Description */}
+          
             <div>
               <textarea
                 className="border w-full text-center rounded-lg py-3 mt-4"
@@ -143,7 +159,7 @@ const AddVisa = () => {
               ></textarea>
             </div>
 
-            {/* Age Restriction */}
+          
             <div>
               <input
                 className="border w-full text-center rounded-lg py-3 mt-4"
@@ -154,7 +170,7 @@ const AddVisa = () => {
               />
             </div>
 
-            {/* Fee */}
+          
             <div>
               <input
                 className="border w-full text-center rounded-lg py-3 mt-4"
@@ -165,7 +181,7 @@ const AddVisa = () => {
               />
             </div>
 
-            {/* Validity */}
+          
             <div>
               <input
                 className="border w-full text-center rounded-lg py-3 mt-4"
@@ -176,7 +192,7 @@ const AddVisa = () => {
               />
             </div>
 
-            {/* Application Method */}
+          
             <div>
               <input
                 className="border w-full text-center rounded-lg py-3 mt-4"
@@ -189,7 +205,7 @@ const AddVisa = () => {
 
           </div>
 
-          {/* Submit Button */}
+        
           <div className="mt-4">
             <input
               type="submit"
