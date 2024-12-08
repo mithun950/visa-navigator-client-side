@@ -12,7 +12,7 @@ const VisaCards = ({ visaData }) => {
         alt=""
         className="w-full h-48 object-cover"
       />
-      <div className="p-6">
+      <div className="p-6 text-center">
         <h3 className="text-2xl font-bold text-gray-800">{countryName}</h3>
         <p className="mt-2 text-sm text-gray-500"><span className='font-bold'>Visa_Type: </span> {visaType}</p>
         <p className="mt-2 text-sm text-gray-500"><span className='font-bold'>Processing_Time: </span>{processingTime}</p>

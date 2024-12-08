@@ -8,6 +8,8 @@ const AuthProvider = ({children}) => {
     const [loading,setLoading] = useState(true)
     const [user, setUser] = useState(null)
     const provider = new GoogleAuthProvider();
+
+    
  const registerWithPass = (email,password) => {
     setLoading(true)
     return createUserWithEmailAndPassword(auth,email,password)

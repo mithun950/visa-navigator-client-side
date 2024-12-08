@@ -21,6 +21,7 @@ import PrivateRoutes from './Auth/PrivateRoutes.jsx';
 import PopularDestinations from './Components/PopularDestiny.jsx';
 import PopularDestiny from './Components/PopularDestiny.jsx';
 import ForgatePass from './Auth/ForgatePass.jsx';
+import UpdateProfile from './Auth/UpdateProfile.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
  {
   path: '/forgatePass',
   element: <ForgatePass></ForgatePass>,
+ },
+ {
+   path:"/updateProfile",
+   element: <UpdateProfile></UpdateProfile>,
  },
  
 ]);

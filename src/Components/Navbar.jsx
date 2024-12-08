@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Auth/AuthProvider";
 import { BsMoon, BsSun } from "react-icons/bs";
 import { toast, ToastContainer } from "react-toastify";
@@ -121,17 +121,20 @@ const Navbar = ({onToggle}) => {
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                          <img className="w-10 rounded-full"
-                         src={user.photo}
+                         src={user.photoURL}
                          alt=""/>
                     </div>
-                    <ul className="menu menu-sm dropdown-content absolute bg-blue-500 rounded-box mt-3 w-50 p-2 shadow">
+                    <ul className="menu menu-sm dropdown-content absolute bg-blue-500 rounded-box mt-3 w-96 h-44  shadow">
                         <li className="group-hover:block">
-                            <a className="text-center text-white">Email:{user.email}</a>
+                            <a className="text-center  text-white text-xl flex justify-center">{user.displayName}</a>
                         </li>
-                        <li className="group-hover:block">
-                       <button onClick={handleLogOut} className="btn btn-sm text-white btn-error  w-full">
+                        <li className="group-hover:block ">
+                       <button onClick={handleLogOut} className="btn btn-sm text-white btn-error mt-6 w-full">
                          Logout
                        </button>
+                       <Link to="/updateProfile"  className="btn btn-sm text-white btn-secondary mt-3  w-full">
+                         Update Profile
+                       </Link>
               </li>
                     </ul>
 
