@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-visa",
-        element: <AddVisa></AddVisa>,
+        element: <PrivateRoutes><AddVisa></AddVisa></PrivateRoutes>,
       },
       {
         path: "/my-added-visas",

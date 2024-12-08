@@ -5,6 +5,9 @@ import LatestVisa from "../LatestVisa";
 import PopularDestiny from "../PopularDestiny";
 import VisaAnimated from "../VisaAnimated";
 import Footer from "../Footer";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+  
 
 const MainLayouts = () => {
   const location = useLocation();
@@ -22,6 +25,7 @@ const MainLayouts = () => {
 
   return (
     <div className={`${darkMode ? "dark" : ""}`}>
+        <ToastContainer></ToastContainer>
         <div className={`${isHome ? "dark:bg-black": ""}`}>
       <header>
         <Navbar onToggle={handleToggle}></Navbar>

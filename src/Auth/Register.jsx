@@ -59,10 +59,12 @@ const Register = () => {
 
 
     const handleLoginWithGoogle = () => {
-       loginWithGoogle(auth)
+       loginWithGoogle()
        .then((result) => {
-           console.log(result.user)
+           console.log(result)
+           navigate("/")
        })
+     .catch(error => console.log(error))
     }
 
     return (
@@ -100,7 +102,7 @@ const Register = () => {
                      </form>
 
                      <div className="text-center ">
-                              <button onClick={handleLoginWithGoogle} type="submit" className="btn btn-primary  w-full mt-6">Login with Google</button>
+                              <button onClick={handleLoginWithGoogle} className="btn btn-primary  w-full mt-6">Login with Google</button>
 
                      </div>  
 

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
+import { toast } from "react-toastify";
 
 
 
@@ -21,7 +22,7 @@ const Login = () => {
         loginUser(email,password)
         .then(() => {
             
-           
+           toast.success('Login Successfully')
             navigate('/' ,{replace:true})
 
         }
