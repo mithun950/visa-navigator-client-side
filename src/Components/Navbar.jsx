@@ -66,9 +66,9 @@ const Navbar = ({onToggle}) => {
     
     </>
     return (
-        <div className="sticky top-0 z-50 backdrop-blur-md w-full bg-blue-500 dark:bg-slate-600   dark:text-white">
+        <div className=" sticky top-0 z-50 backdrop-blur bg-opacity-80 w-full bg-blue-500 dark:bg-slate-600   dark:text-white">
           <ToastContainer></ToastContainer>
-          <div className="navbar w-11/12 mx-auto">
+          <div className="navbar w-11/12 mx-auto flex justify-between items-center py-2 ">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -105,8 +105,8 @@ const Navbar = ({onToggle}) => {
   <label className="swap swap-rotate">
     <input type="checkbox" onChange={onToggle} />
   
-    <BsMoon className="swap-off w-8 h-8 text-black" />
-    <BsSun className="swap-on w-8 h-8 text-yellow-500" />
+    <BsMoon className="swap-off w-6 h-6 text-black" />
+    <BsSun className="swap-on w-6 h-6 text-yellow-500" />
   
  
   </label>
