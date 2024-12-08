@@ -6,12 +6,13 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBGgga3kuE9d_2bOk4JmH4vYc-ts1yyfhA",
-  authDomain: "visa-navigate-6d091.firebaseapp.com",
-  projectId: "visa-navigate-6d091",
-  storageBucket: "visa-navigate-6d091.firebasestorage.app",
-  messagingSenderId: "7346470209",
-  appId: "1:7346470209:web:5efa8108c60ad4865135c0"
+  apiKey: REACT_APP_FIREBASE_API_KEY,
+  authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId:REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket:REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId:REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId:REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 /// Initialize Firebase
