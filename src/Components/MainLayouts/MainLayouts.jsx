@@ -7,6 +7,7 @@ import VisaAnimated from "../VisaAnimated";
 import Footer from "../Footer";
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import PromotionalOffers from "../PromotionalOffers";
   
 
 const MainLayouts = () => {
@@ -35,7 +36,7 @@ const MainLayouts = () => {
       </main>
 
       {isHome && <LatestVisa></LatestVisa>}
-      {isHome && <PopularDestiny></PopularDestiny>}
+      {isHome && <PromotionalOffers></PromotionalOffers>}
       {isHome && <VisaAnimated></VisaAnimated>}
 
       <footer>

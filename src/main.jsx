@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -23,6 +23,8 @@ import PopularDestiny from './Components/PopularDestiny.jsx';
 import ForgatePass from './Auth/ForgatePass.jsx';
 import UpdateProfile from './Auth/UpdateProfile.jsx';
 import Error from './Pages/Error.jsx';
+import AboutMe from './Pages/AboutUs.jsx';
+import ContactUs from './Pages/ContactUs.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -60,6 +62,15 @@ const router = createBrowserRouter([
       {
         path: '/visaDetails',
         element:<PrivateRoutes> <VisaDetails></VisaDetails></PrivateRoutes>,
+      },
+      {
+        path: "/about",
+        element: <AboutMe></AboutMe>
+
+      },
+      {
+        path: "/contactUs",
+        element: <ContactUs></ContactUs>
       }
     
     ]

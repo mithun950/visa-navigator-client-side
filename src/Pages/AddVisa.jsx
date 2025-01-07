@@ -1,26 +1,21 @@
 import { useContext, useState } from 'react';
+import { motion } from 'framer-motion'; // Framer Motion ইমপোর্ট করা হয়েছে
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Auth/AuthProvider';
+import { FaImage, FaPassport, FaFileAlt } from 'react-icons/fa'; // React Icons
 
 const AddVisa = () => {
-
   const { user } = useContext(AuthContext);
+  const [requireDoc, setRequireDoc] = useState([]);
 
-
-
-  const [requireDoc,setRequireDoc] = useState([])
   const handleRequired = (event) => {
-     const {value,checked} = event.target;
-
-     if(checked){
-      setRequireDoc(pre => [...pre,value])
-     }
-     else{
-      setRequireDoc(pre => {
-        return[...pre.filter(doc => doc!==value)]
-      })
-     }
-  }
+    const { value, checked } = event.target;
+    if (checked) {
+      setRequireDoc((pre) => [...pre, value]);
+    } else {
+      setRequireDoc((pre) => pre.filter((doc) => doc !== value));
+    }
+  };
 
   const handleAddVisa = (e) => {
     e.preventDefault();
@@ -76,16 +71,35 @@ const AddVisa = () => {
   };
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold text-center mt-6">Add Visa</h2>
-      <form onSubmit={handleAddVisa}>
-        <div className=" bg-gray-300 w-10/12 mx-auto p-10 rounded-lg mt-8 shadow-lg">
-          <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className=" w-11/12 mx-auto flex flex-col lg:flex-row items-center px-4 py-8  gap-8 mt-20">
+      {/* Image Section */}
+      <motion.div
+        className="lg:flex-1 flex justify-center overflow-hidden w-full"
+        initial={{ opacity: 0, x: '-100%' }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <img
+          className="w-full h-full lg:h-full object-cover rounded-lg"
+          src="https://wp.rrdevs.net/routex/wp-content/uploads/2024/07/contact-left-img.png"
+          alt="Flying vector"
+        />
+      </motion.div>
 
+      {/* Form Section */}
+      
+      <div className="flex flex-col items-center w-full lg:w-7/12 bg-lime-100 p-6 rounded-lg shadow-lg">
+        <h2 className="text-3xl font-bold text-center text-font-color mb-2">Add Your Visa Details</h2>
+        <p className="text-center text-gray-600 mb-6">
+          Please fill out the form below to add your visa details.
+        </p>
+        <form onSubmit={handleAddVisa} className="w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Country Image */}
-            <div>
+            <div className="flex items-center border p-3 rounded-lg">
+              <FaImage className="text-blue-600 mr-3" />
               <input
-                className="border w-full text-center rounded-lg py-3 mt-4"
+                className="w-full focus:outline-none"
                 type="text"
                 name="countryImage"
                 placeholder="Country Image URL"
@@ -94,9 +108,10 @@ const AddVisa = () => {
             </div>
 
             {/* Country Name */}
-            <div>
+            <div className="flex items-center border p-3 rounded-lg">
+              <FaPassport className="text-blue-600 mr-3" />
               <input
-                className="border w-full text-center rounded-lg py-3 mt-4"
+                className="w-full "
                 type="text"
                 name="countryName"
                 placeholder="Country Name"
@@ -107,9 +122,8 @@ const AddVisa = () => {
             {/* Visa Type */}
             <div>
               <select
-                className="border w-full text-center rounded-lg py-2 px-3 mt-2"
+                className="border w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200"
                 name="visaType"
-                placeholder="Visa type"
                 required
               >
                 <option value="Tourist Visa">Tourist Visa</option>
@@ -118,10 +132,11 @@ const AddVisa = () => {
               </select>
             </div>
 
-          
-            <div>
+            {/* Processing Time */}
+            <div className="flex items-center border p-3 rounded-lg">
+              <FaFileAlt className="text-blue-600 mr-3" />
               <input
-                className="border w-full text-center rounded-lg py-3 mt-4"
+                className="w-full focus:outline-none"
                 type="text"
                 name="processingTime"
                 placeholder="Processing Time"
@@ -129,29 +144,28 @@ const AddVisa = () => {
               />
             </div>
 
-            
-            <div>
-              <label className="block font-medium mt-4">Required Documents</label>
-              <div className="grid md:grid-cols-3 justify-center gap-4 mt-2">
-                <label>
-                  <input onChange={handleRequired} type="checkbox" name="requiredDocuments" value="Valid passport" />
-                  <span className="ml-2">Valid passport</span>
-                </label>
-                <label>
-                  <input onChange={handleRequired} type="checkbox" name="requiredDocuments" value="Visa application form" />
-                  <span className="ml-2">Visa application form</span>
-                </label>
-                <label>
-                  <input onChange={handleRequired} type="checkbox" name="requiredDocuments" value="Recent passport-sized photograph" />
-                  <span className="ml-2">Recent passport-sized photograph</span>
-                </label>
+            {/* Required Documents */}
+            <div className="col-span-2">
+              <label className="block font-medium text-gray-700">Required Documents</label>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-2">
+                {['Valid passport', 'Visa application form', 'Recent passport-sized photograph'].map((doc, index) => (
+                  <label key={index} className="flex items-center">
+                    <input
+                      onChange={handleRequired}
+                      type="checkbox"
+                      value={doc}
+                      className="mr-2"
+                    />
+                    <span>{doc}</span>
+                  </label>
+                ))}
               </div>
             </div>
 
-          
-            <div>
+            {/* Description */}
+            <div className="col-span-2">
               <textarea
-                className="border w-full text-center rounded-lg py-3 mt-4"
+                className="border w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200"
                 name="description"
                 placeholder="Description"
                 rows="4"
@@ -159,10 +173,10 @@ const AddVisa = () => {
               ></textarea>
             </div>
 
-          
+            {/* Age Restriction */}
             <div>
               <input
-                className="border w-full text-center rounded-lg py-3 mt-4"
+                className="border w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200"
                 type="number"
                 name="ageRestriction"
                 placeholder="Age Restriction (Minimum age 18 years)"
@@ -170,10 +184,10 @@ const AddVisa = () => {
               />
             </div>
 
-          
+            {/* Fee */}
             <div>
               <input
-                className="border w-full text-center rounded-lg py-3 mt-4"
+                className="border w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200"
                 type="number"
                 name="fee"
                 placeholder="Fee (Taka)"
@@ -181,10 +195,10 @@ const AddVisa = () => {
               />
             </div>
 
-          
+            {/* Validity */}
             <div>
               <input
-                className="border w-full text-center rounded-lg py-3 mt-4"
+                className="border w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200"
                 type="text"
                 name="validity"
                 placeholder="Validity"
@@ -192,10 +206,10 @@ const AddVisa = () => {
               />
             </div>
 
-          
+            {/* Application Method */}
             <div>
               <input
-                className="border w-full text-center rounded-lg py-3 mt-4"
+                className="border w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200"
                 type="text"
                 name="applicationMethod"
                 placeholder="Application Method"
@@ -203,18 +217,18 @@ const AddVisa = () => {
               />
             </div>
 
+            {/* Submit Button */}
+            <div className="col-span-2 text-center">
+              <button
+                type="submit"
+                className="w-6/12  p-3 bg-main-color text-white font-bold rounded-lg hover:bg-font-color focus:outline-none focus:ring-2 focus:ring-blue-400"
+              >
+                Add Visa
+              </button>
+            </div>
           </div>
-
-        
-          <div className="mt-4">
-            <input
-              type="submit"
-              value="Add Visa"
-              className="btn btn-block  bg-blue-600 hover:bg-blue-500 text-white"
-            />
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };

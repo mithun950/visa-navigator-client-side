@@ -15,7 +15,7 @@ const PopularDestiny = () => {
   }, []);
 
   return (
-    <section className="py-12 mt-16 bg-gradient-to-r from-blue-100 to-gray-100 w-full mx-auto">
+    <section className="py-12 mt-16  w-11/12 mx-auto">
       <motion.h2
         className="text-4xl font-bold text-center mb-12 text-blue-600"
         initial={{ opacity: 0, y: -30 }}
