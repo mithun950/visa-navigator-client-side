@@ -169,11 +169,11 @@ The **Visa Navigator Portal** simplifies the process of checking visa requiremen
 
 ### Frontend:
 
-- Deployed on [Netlify](frontend-deployment-link)
+- Deployed on [Firebase]
 
 ### Backend:
 
-- Deployed on [Render](backend-deployment-link)
+- Deployed on [vercel]
 
 ---
 
